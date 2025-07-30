@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Bhuu 🌸</title>
+  <style>
+    /* Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f0, #fffafc);
+      overflow: hidden;
+      color: #333;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .hidden {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .fade-in {
+      opacity: 1 !important;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5em;
+      color: #ff1493;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ff69b4; }
+      to { text-shadow: 0 0 20px #ff1493; }
+    }
+
+    #thankButton {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #ff66cc, #ff99cc);
+      color: white;
+      font-family: 'Poppins';
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #thankButton:hover {
+      transform: scale(1.1);
+      animation: shimmer 1s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -100px; }
+      100% { background-position: 200px; }
+    }
+  </style>
+</head>
+<body>
+<div id="tree-container" class="center">
+  <svg id="tree" width="300" height="400" viewBox="0 0 300 400">
+    <!-- Tree trunk -->
+    <rect x="140" y="250" width="20" height="120" fill="#8B4513">
+      <animate attributeName="height" from="0" to="120" dur="2s" fill="freeze" />
+    </rect>
+    <!-- Branches (appearing one by one) -->
+    <path d="M150 250 C120 200, 100 180, 110 140" stroke="#8B4513" stroke-width="5" fill="transparent">
+      <animate attributeName="stroke-width" from="0" to="5" dur="2s" begin="2s" fill="freeze" />
+    </path>
+    <path d="M150 250 C180 200, 200 180, 190 140" stroke="#8B4513" stroke-width="5" fill="transparent">
+      <animate attributeName="stroke-width" from="0" to="5" dur="2s" begin="2.5s" fill="freeze" />
+    </path>
+    <!-- Leaves -->
+    <circle cx="110" cy="140" r="10" fill="green">
+      <animate attributeName="r" from="0" to="10" dur="1.5s" begin="3s" fill="freeze" />
+    </circle>
+    <circle cx="190" cy="140" r="10" fill="green">
+      <animate attributeName="r" from="0" to="10" dur="1.5s" begin="3.5s" fill="freeze" />
+    </circle>
+  </svg>
+</div>
+
+<!-- Floating Hearts -->
+<style>
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: pink;
+    clip-path: polygon(50% 0%, 0% 35%, 0% 100%, 50% 70%, 100% 100%, 100% 35%);
+    animation: floatUp 6s infinite ease-in;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-100px) scale(1.2); opacity: 0.6; }
+    100% { transform: translateY(-200px) scale(0.8); opacity: 0; }
+  }
+</style>
+<script>
+  function launchHearts() {
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = Math.random() * window.innerHeight + 'px';
+      heart.style.backgroundColor = ['#ff99aa', '#ff3366', '#ffcccc'][i % 3];
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+  }
+  window.onload = launchHearts;
+</script>
+<div id="messages" class="center">
+  <div class="hidden" style="font-size:1.5em;">Always with you ❤️</div>
+  <div class="hidden" style="font-size:1.5em;">Always for you ❤️</div>
+  <div class="hidden" style="font-size:1.5em;">Always youu ❤️</div>
+  <div class="hidden" style="font-size:1.6em;">THE CUTEST Girllll 🥹💖</div>
+  <div class="hidden" style="font-size:1.6em;">Chlti Firtiii UNIVERSEEEEE 💫🫶🙈</div>
+</div>
+
+<script>
+  function showMessages() {
+    const msgs = document.querySelectorAll('#messages .hidden');
+    msgs.forEach((el, idx) => {
+      setTimeout(() => {
+        el.classList.add('fade-in');
+      }, 4000 + idx * 1500);
+    });
+
+    // Fade out after all show
+    setTimeout(() => {
+      msgs.forEach(el => el.classList.remove('fade-in'));
+    }, 14000);
+  }
+
+  window.onload = () => {
+    launchHearts();
+    showMessages();
+  };
+</script>
